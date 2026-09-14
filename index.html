@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Website</title>
+
+    <style>
+        body {
+            background-color: lightblue;
+            text-align: center;
+            font-family: Arial;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">Welcome to My Website</h1>
+
+    <p>This is my first website. I am learning web development.</p>
+
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+         alt="Computer for web development">
+
+    <br>
+
+    <button onclick="changeHeading()">Click Me</button>
+
+    <script>
+        function changeHeading() {
+            document.getElementById("heading").innerHTML =
+                "You clicked the button! 🎉";
+        }
+    </script>
+
+</body>
+</html>
