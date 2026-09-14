@@ -1,56 +1,1015 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Austine's LIS Study Hub</title>
 
     <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: lightblue;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(135deg, #071952, #088395, #35a29f);
+            color: white;
             text-align: center;
-            font-family: Arial;
+            padding: 50px 20px;
         }
 
-        h1 {
-            color: darkblue;
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
         }
 
-        p {
-            font-size: 20px;
+        header p {
+            font-size: 18px;
         }
 
-        img {
-            width: 300px;
+        nav {
+            background: #020b2d;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 4px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            background: #35a29f;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #071952;
+            font-size: 30px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 35px;
             border-radius: 15px;
-            margin: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .welcome h2 {
+            color: #088395;
+            margin-bottom: 15px;
+        }
+
+        .welcome p {
+            line-height: 1.8;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #088395;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card h3 {
+            color: #071952;
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 18px;
+            background: #088395;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #071952;
+        }
+
+        /* COURSE PAGE */
+
+        #coursePage {
+            display: none;
+        }
+
+        .course-content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .course-content h2 {
+            color: #071952;
+            margin-bottom: 15px;
+        }
+
+        .course-content h3 {
+            color: #088395;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .course-content p {
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .course-content ul {
+            margin-left: 25px;
+            line-height: 1.9;
+        }
+
+        .quiz-question {
+            background: #f1f8fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .quiz-question h4 {
+            margin-bottom: 12px;
+            color: #071952;
+        }
+
+        .quiz-question label {
+            display: block;
+            padding: 7px;
             cursor: pointer;
         }
+
+        .quiz-question label:hover {
+            background: #dff4f4;
+            border-radius: 5px;
+        }
+
+        #quizResult {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #e8f7f4;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .back-button {
+            margin-bottom: 20px;
+            background: #071952;
+        }
+
+        footer {
+            background: #020b2d;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .course-content {
+                padding: 20px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <h1 id="heading">Welcome to My Website</h1>
 
-    <p>This is my first website. I am learning web development.</p>
+<header>
 
-    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-         alt="Computer for web development">
+    <h1>📚 Austine's LIS Study Hub</h1>
 
-    <br>
+    <p>
+        Bachelor of Arts in Library and Information Science
+    </p>
 
-    <button onclick="changeHeading()">Click Me</button>
+    <p>
+        University of Malawi
+    </p>
 
-    <script>
-        function changeHeading() {
-            document.getElementById("heading").innerHTML =
-                "You clicked the button! 🎉";
-        }
-    </script>
+</header>
+
+
+<nav>
+
+    <a href="#home">Home</a>
+    <a href="#year1">Year 1</a>
+    <a href="#year2">Year 2</a>
+    <a href="#coursePage">Study</a>
+
+</nav>
+
+
+<main>
+
+
+<!-- HOME -->
+
+<section id="home">
+
+    <div class="welcome">
+
+        <h2>Welcome to the LIS Study Hub 🎓</h2>
+
+        <p>
+            A personal learning website for Library and
+            Information Science students.
+        </p>
+
+        <br>
+
+        <p>
+            Select a course below to read notes and practise
+            multiple-choice questions.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- YEAR 1 -->
+
+<section id="year1">
+
+    <h2 class="section-title">
+        📘 First Year
+    </h2>
+
+    <div class="course-container">
+
+
+        <div class="course-card">
+
+            <h3>LIS121</h3>
+
+            <p>
+                Organization of Knowledge II
+            </p>
+
+            <button onclick="openCourse('LIS121')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS123</h3>
+
+            <p>
+                Writing and Oral Skills for Social Science
+            </p>
+
+            <button onclick="openCourse('LIS123')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS124</h3>
+
+            <p>
+                Marketing of Library and Information
+                Products and Services
+            </p>
+
+            <button onclick="openCourse('LIS124')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS125</h3>
+
+            <p>
+                ICT II
+            </p>
+
+            <button onclick="openCourse('LIS125')">
+                Study Course
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- YEAR 2 -->
+
+<section id="year2">
+
+    <h2 class="section-title">
+        📕 Second Year
+    </h2>
+
+    <div class="course-container">
+
+
+        <div class="course-card">
+
+            <h3>LIS211</h3>
+
+            <p>
+                Information Literacy
+            </p>
+
+            <button onclick="openCourse('LIS211')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS212</h3>
+
+            <p>
+                Records and Archives Management
+            </p>
+
+            <button onclick="openCourse('LIS212')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS213</h3>
+
+            <p>
+                Organization of Knowledge III
+            </p>
+
+            <button onclick="openCourse('LIS213')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS214</h3>
+
+            <p>
+                Digital Library Management
+            </p>
+
+            <button onclick="openCourse('LIS214')">
+                Study Course
+            </button>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <h3>LIS215</h3>
+
+            <p>
+                End User Computing I
+            </p>
+
+            <button onclick="openCourse('LIS215')">
+                Study Course
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- COURSE PAGE -->
+
+<section id="coursePage">
+
+    <button class="back-button" onclick="goBack()">
+        ← Back to Courses
+    </button>
+
+
+    <div class="course-content" id="courseContent">
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Austine's LIS Study Hub
+    </p>
+
+    <p>
+        Learn • Practise • Improve • Succeed 🎓
+    </p>
+
+</footer>
+
+
+<script>
+
+
+function openCourse(course) {
+
+    document.getElementById("home").style.display = "none";
+
+    document.getElementById("year1").style.display = "none";
+
+    document.getElementById("year2").style.display = "none";
+
+    document.getElementById("coursePage").style.display = "block";
+
+
+    if (course === "LIS211") {
+
+        showLIS211();
+
+    }
+
+    else {
+
+        document.getElementById("courseContent").innerHTML = `
+
+            <h2>${course}</h2>
+
+            <p>
+                Notes and questions for this course will be
+                added here.
+            </p>
+
+            <p>
+                We will build this section using your actual
+                lecture material.
+            </p>
+
+        `;
+
+    }
+
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+function goBack() {
+
+    document.getElementById("coursePage").style.display = "none";
+
+    document.getElementById("home").style.display = "block";
+
+    document.getElementById("year1").style.display = "block";
+
+    document.getElementById("year2").style.display = "block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+function showLIS211() {
+
+document.getElementById("courseContent").innerHTML = `
+
+<h2>📘 LIS211 — Information Literacy</h2>
+
+<p>
+Information literacy goes beyond simply finding information
+online or in books. It involves knowing when information is
+needed, locating appropriate information, evaluating it,
+organizing it, using it ethically and creating new knowledge.
+</p>
+
+
+<h3>1. Identifying Information Needs</h3>
+
+<p>
+An information need is the gap between what a person already
+knows and what the person needs to know.
+</p>
+
+<ul>
+
+<li>Solving a problem</li>
+
+<li>Answering a question</li>
+
+<li>Making a decision</li>
+
+<li>Completing a task</li>
+
+<li>Determining the scope of the information required</li>
+
+</ul>
+
+
+<h3>2. Locating Information</h3>
+
+<p>
+Information literacy requires knowing where appropriate
+information can be found and understanding the strengths
+and limitations of different information sources.
+</p>
+
+<ul>
+
+<li>Library databases</li>
+
+<li>Academic journals</li>
+
+<li>Books</li>
+
+<li>Websites</li>
+
+<li>Research databases</li>
+
+</ul>
+
+<p>
+Examples of academic databases include Scopus,
+Web of Science, JSTOR and EBSCO.
+</p>
+
+
+<h3>3. Evaluating Information</h3>
+
+<p>
+Information should be evaluated before it is used.
+Important considerations include credibility, relevance,
+authority, accuracy, currency, evidence and purpose.
+</p>
+
+<p>
+The CRAAP Test can be used to evaluate information sources.
+CRAAP stands for Currency, Relevance, Authority, Accuracy
+and Purpose.
+</p>
+
+
+<h3>4. Organizing Information</h3>
+
+<p>
+Organizing information refers to the systematic arrangement,
+classification, documentation and management of information
+collected from different sources so that it can be understood,
+evaluated and reused.
+</p>
+
+<p>
+The purpose is to move beyond simply collecting information.
+It helps a researcher synthesize evidence, identify
+relationships, compare perspectives and construct coherent
+arguments.
+</p>
+
+
+<h3>5. Ethical Use of Information</h3>
+
+<p>
+Information should be used responsibly. Users should respect
+copyright, acknowledge sources and avoid plagiarism.
+</p>
+
+
+<h3>6. Creating New Knowledge</h3>
+
+<p>
+Information literacy can lead to the creation of new knowledge
+when information from different sources is analysed,
+synthesized and used to develop new understanding.
+</p>
+
+
+<h2>🧠 LIS211 Practice Quiz</h2>
+
+
+<div class="quiz-question">
+
+<h4>1. What is an information need?</h4>
+
+<label>
+<input type="radio" name="l1" value="A">
+A. The gap between what is known and what is needed
+</label>
+
+<label>
+<input type="radio" name="l1" value="B">
+B. A library building
+</label>
+
+<label>
+<input type="radio" name="l1" value="C">
+C. A computer programme
+</label>
+
+<label>
+<input type="radio" name="l1" value="D">
+D. A newspaper
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>2. Which is an academic database?</h4>
+
+<label>
+<input type="radio" name="l2" value="A">
+A. Scopus
+</label>
+
+<label>
+<input type="radio" name="l2" value="B">
+B. Calculator
+</label>
+
+<label>
+<input type="radio" name="l2" value="C">
+C. Camera
+</label>
+
+<label>
+<input type="radio" name="l2" value="D">
+D. Music player
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>3. Which is NOT normally considered when evaluating information?</h4>
+
+<label>
+<input type="radio" name="l3" value="A">
+A. Accuracy
+</label>
+
+<label>
+<input type="radio" name="l3" value="B">
+B. Currency
+</label>
+
+<label>
+<input type="radio" name="l3" value="C">
+C. Authority
+</label>
+
+<label>
+<input type="radio" name="l3" value="D">
+D. Colour of the website
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>4. What does CRAAP stand for?</h4>
+
+<label>
+<input type="radio" name="l4" value="A">
+A. Currency, Relevance, Authority, Accuracy and Purpose
+</label>
+
+<label>
+<input type="radio" name="l4" value="B">
+B. Classification, Research, Archives and Analysis Process
+</label>
+
+<label>
+<input type="radio" name="l4" value="C">
+C. Current Records and Archives Programme
+</label>
+
+<label>
+<input type="radio" name="l4" value="D">
+D. Computer Research and Academic Application Process
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>5. Information literacy goes beyond:</h4>
+
+<label>
+<input type="radio" name="l5" value="A">
+A. Simply finding information
+</label>
+
+<label>
+<input type="radio" name="l5" value="B">
+B. Evaluating sources
+</label>
+
+<label>
+<input type="radio" name="l5" value="C">
+C. Identifying information needs
+</label>
+
+<label>
+<input type="radio" name="l5" value="D">
+D. Using information ethically
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>6. Which principle is related to ethical information use?</h4>
+
+<label>
+<input type="radio" name="l6" value="A">
+A. Plagiarism
+</label>
+
+<label>
+<input type="radio" name="l6" value="B">
+B. Acknowledging sources
+</label>
+
+<label>
+<input type="radio" name="l6" value="C">
+C. Copying everything
+</label>
+
+<label>
+<input type="radio" name="l6" value="D">
+D. Ignoring copyright
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>7. Which is an important factor when evaluating a source?</h4>
+
+<label>
+<input type="radio" name="l7" value="A">
+A. Authority
+</label>
+
+<label>
+<input type="radio" name="l7" value="B">
+B. Phone size
+</label>
+
+<label>
+<input type="radio" name="l7" value="C">
+C. Screen brightness
+</label>
+
+<label>
+<input type="radio" name="l7" value="D">
+D. Keyboard colour
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>8. Organizing information helps researchers to:</h4>
+
+<label>
+<input type="radio" name="l8" value="A">
+A. Compare perspectives
+</label>
+
+<label>
+<input type="radio" name="l8" value="B">
+B. Destroy evidence
+</label>
+
+<label>
+<input type="radio" name="l8" value="C">
+C. Avoid research
+</label>
+
+<label>
+<input type="radio" name="l8" value="D">
+D. Hide information
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>9. Which is an example of misinformation?</h4>
+
+<label>
+<input type="radio" name="l9" value="A">
+A. False or inaccurate information
+</label>
+
+<label>
+<input type="radio" name="l9" value="B">
+B. Every academic article
+</label>
+
+<label>
+<input type="radio" name="l9" value="C">
+C. Every library catalogue
+</label>
+
+<label>
+<input type="radio" name="l9" value="D">
+D. Every government record
+</label>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h4>10. What can information literacy ultimately contribute to?</h4>
+
+<label>
+<input type="radio" name="l10" value="A">
+A. Creating new knowledge
+</label>
+
+<label>
+<input type="radio" name="l10" value="B">
+C. Avoiding information
+</label>
+
+<label>
+<input type="radio" name="l10" value="C">
+C. Destroying sources
+</label>
+
+<label>
+<input type="radio" name="l10" value="D">
+D. Ignoring evidence
+</label>
+
+</div>
+
+
+<br>
+
+<button onclick="markLIS211()">
+Submit LIS211 Quiz
+</button>
+
+
+<div id="quizResult"></div>
+
+`;
+
+}
+
+
+
+function markLIS211() {
+
+let answers = {
+
+l1:"A",
+l2:"A",
+l3:"D",
+l4:"A",
+l5:"A",
+l6:"B",
+l7:"A",
+l8:"A",
+l9:"A",
+l10:"A"
+
+};
+
+
+let score = 0;
+
+
+for (let question in answers) {
+
+let selected =
+document.querySelector(
+'input[name="' + question + '"]:checked'
+);
+
+
+if (selected && selected.value === answers[question]) {
+
+score++;
+
+}
+
+}
+
+
+let percentage = score * 10;
+
+
+document.getElementById("quizResult").innerHTML =
+
+"🎉 Your Score: " +
+score +
+"/10<br>" +
+"Percentage: " +
+percentage +
+"%";
+
+
+}
+
+</script>
+
 
 </body>
+
 </html>
