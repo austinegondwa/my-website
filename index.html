@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,1008 +7,1106 @@
     <title>Austine's LIS Study Hub</title>
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
+            background: #eef4ff;
             color: #222;
         }
 
-        header {
-            background: linear-gradient(135deg, #071952, #088395, #35a29f);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
+        /* LOGIN / REGISTER */
+
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #061a40, #087f8c, #4caf50);
         }
 
-        header h1 {
-            font-size: 40px;
+        .auth-box {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 55px;
             margin-bottom: 10px;
         }
 
-        header p {
-            font-size: 18px;
+        .auth-box h1 {
+            color: #063970;
+            margin-bottom: 8px;
+        }
+
+        .auth-box p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            border: none;
+            padding: 13px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: #087f8c;
+            color: white;
+        }
+
+        .register-btn {
+            width: 100%;
+            background: #4caf50;
+            color: white;
+        }
+
+        .switch {
+            margin-top: 20px;
+            color: #087f8c;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* WEBSITE */
+
+        #website {
+            display: none;
+        }
+
+        header {
+            background: linear-gradient(135deg, #063970, #087f8c);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
         }
 
         nav {
-            background: #020b2d;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            background: #041f3d;
             padding: 12px;
+            text-align: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
         }
 
-        nav a {
+        nav button {
+            background: transparent;
             color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            margin: 4px;
-            border-radius: 20px;
+            margin: 3px;
+            padding: 10px 15px;
         }
 
-        nav a:hover {
-            background: #35a29f;
+        nav button:hover {
+            background: #087f8c;
         }
 
-        main {
+        .logout {
+            background: #d32f2f !important;
+        }
+
+        .container {
             max-width: 1100px;
             margin: auto;
-            padding: 30px 20px;
-        }
-
-        section {
-            margin-bottom: 45px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #071952;
-            font-size: 30px;
+            padding: 25px;
         }
 
         .welcome {
             background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .welcome h2 {
-            color: #088395;
-            margin-bottom: 15px;
-        }
-
-        .welcome p {
-            line-height: 1.8;
-        }
-
-        .course-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .course-card {
-            background: white;
-            border-radius: 15px;
             padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .year-title {
+            margin: 25px 0 15px;
+            color: #063970;
+        }
+
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .course {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid #088395;
             transition: 0.3s;
         }
 
-        .course-card:hover {
+        .course:hover {
             transform: translateY(-5px);
         }
 
-        .course-card h3 {
-            color: #071952;
+        .course h3 {
+            color: #063970;
             margin-bottom: 10px;
         }
 
-        .course-card p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background: #088395;
+        .course button {
+            background: #087f8c;
             color: white;
-            border: none;
-            padding: 11px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 15px;
+            width: 100%;
         }
 
-        button:hover {
-            background: #071952;
-        }
-
-        /* COURSE PAGE */
-
-        #coursePage {
-            display: none;
-        }
-
-        .course-content {
+        .content-box {
             background: white;
-            padding: 35px;
+            padding: 25px;
+            margin-top: 25px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
-        .course-content h2 {
-            color: #071952;
+        .content-box h2 {
+            color: #063970;
             margin-bottom: 15px;
         }
 
-        .course-content h3 {
-            color: #088395;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-
-        .course-content p {
-            line-height: 1.8;
-            margin-bottom: 12px;
-        }
-
-        .course-content ul {
-            margin-left: 25px;
-            line-height: 1.9;
-        }
-
-        .quiz-question {
-            background: #f1f8fa;
-            padding: 20px;
-            border-radius: 10px;
+        .content-box h3 {
+            color: #087f8c;
             margin-top: 20px;
+            margin-bottom: 8px;
         }
 
-        .quiz-question h4 {
+        .content-box p {
+            line-height: 1.7;
             margin-bottom: 12px;
-            color: #071952;
         }
 
-        .quiz-question label {
+        .question {
+            background: #f2f7ff;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        .question label {
             display: block;
-            padding: 7px;
-            cursor: pointer;
+            margin: 8px 0;
         }
 
-        .quiz-question label:hover {
-            background: #dff4f4;
-            border-radius: 5px;
+        .submit-quiz {
+            background: #4caf50;
+            color: white;
         }
 
-        #quizResult {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 10px;
-            background: #e8f7f4;
+        .result {
+            margin-top: 15px;
             font-size: 20px;
             font-weight: bold;
-            text-align: center;
-        }
-
-        .back-button {
-            margin-bottom: 20px;
-            background: #071952;
         }
 
         footer {
-            background: #020b2d;
+            background: #041f3d;
             color: white;
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             margin-top: 40px;
         }
 
-        @media (max-width: 600px) {
-
+        @media(max-width:600px) {
             header h1 {
-                font-size: 28px;
+                font-size: 25px;
             }
 
-            .course-content {
-                padding: 20px;
+            .auth-box {
+                padding: 25px;
             }
 
+            .container {
+                padding: 15px;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+<!-- ================= LOGIN / REGISTER ================= -->
 
-<header>
+<div id="auth">
 
-    <h1>📚 Austine's LIS Study Hub</h1>
+    <div class="auth-container">
 
-    <p>
-        Bachelor of Arts in Library and Information Science
-    </p>
+        <div class="auth-box">
 
-    <p>
-        University of Malawi
-    </p>
+            <div class="logo">📚</div>
 
-</header>
+            <h1 id="authTitle">LIS Study Hub</h1>
+
+            <p id="authDescription">
+                Login to access your Library and Information Science study materials.
+            </p>
+
+            <!-- LOGIN FORM -->
+
+            <div id="loginForm">
+
+                <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Username"
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                >
+
+                <button class="login-btn" onclick="login()">
+                    🔐 Login
+                </button>
+
+                <div class="switch" onclick="showRegister()">
+                    Don't have an account? Create one
+                </div>
+
+            </div>
 
 
-<nav>
+            <!-- REGISTER FORM -->
 
-    <a href="#home">Home</a>
-    <a href="#year1">Year 1</a>
-    <a href="#year2">Year 2</a>
-    <a href="#coursePage">Study</a>
+            <div id="registerForm" style="display:none;">
 
-</nav>
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Create username"
+                >
 
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create password"
+                >
 
-<main>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                >
 
+                <button class="register-btn" onclick="register()">
+                    🆕 Create Account
+                </button>
 
-<!-- HOME -->
+                <div class="switch" onclick="showLogin()">
+                    Already have an account? Login
+                </div>
 
-<section id="home">
+            </div>
 
-    <div class="welcome">
+            <div id="message" class="message"></div>
 
-        <h2>Welcome to the LIS Study Hub 🎓</h2>
-
-        <p>
-            A personal learning website for Library and
-            Information Science students.
-        </p>
-
-        <br>
-
-        <p>
-            Select a course below to read notes and practise
-            multiple-choice questions.
-        </p>
+        </div>
 
     </div>
 
-</section>
+</div>
 
 
-<!-- YEAR 1 -->
+<!-- ================= MAIN WEBSITE ================= -->
 
-<section id="year1">
+<div id="website">
 
-    <h2 class="section-title">
-        📘 First Year
-    </h2>
+    <header>
 
-    <div class="course-container">
+        <h1>📚 Austine's LIS Study Hub</h1>
+
+        <p>University of Malawi — Library and Information Science</p>
+
+    </header>
 
 
-        <div class="course-card">
+    <nav>
 
-            <h3>LIS121</h3>
+        <button onclick="showHome()">🏠 Home</button>
 
-            <p>
-                Organization of Knowledge II
-            </p>
+        <button onclick="showYear1()">📘 Year 1</button>
 
-            <button onclick="openCourse('LIS121')">
-                Study Course
-            </button>
+        <button onclick="showYear2()">📗 Year 2</button>
+
+        <button onclick="showLIS211()">📝 LIS211</button>
+
+        <button class="logout" onclick="logout()">🚪 Logout</button>
+
+    </nav>
+
+
+    <div class="container">
+
+        <!-- HOME -->
+
+        <div id="home">
+
+            <div class="welcome">
+
+                <h2>Welcome to your Study Hub 🎓</h2>
+
+                <br>
+
+                <p>
+                    This website is designed to help you study
+                    Library and Information Science courses.
+                </p>
+
+                <br>
+
+                <p>
+                    📚 Read notes<br>
+                    ❓ Answer multiple-choice questions<br>
+                    ✅ Check your score<br>
+                    🎯 Prepare for examinations
+                </p>
+
+            </div>
+
+            <h2 class="year-title">📘 Year 1 Courses</h2>
+
+            <div class="courses">
+
+                <div class="course">
+                    <h3>LIS121</h3>
+                    <p>Organization of Knowledge II</p>
+                    <button onclick="courseMessage('LIS121')">
+                        Open Course
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS123</h3>
+                    <p>Writing and Oral Skills for Social Science</p>
+                    <button onclick="courseMessage('LIS123')">
+                        Open Course
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS124</h3>
+                    <p>Marketing of Library and Information Products and Services</p>
+                    <button onclick="courseMessage('LIS124')">
+                        Open Course
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS125</h3>
+                    <p>ICT II</p>
+                    <button onclick="courseMessage('LIS125')">
+                        Open Course
+                    </button>
+                </div>
+
+            </div>
+
+
+            <h2 class="year-title">📗 Year 2 Courses</h2>
+
+            <div class="courses">
+
+                <div class="course">
+                    <h3>LIS211</h3>
+                    <p>Information Literacy</p>
+                    <button onclick="showLIS211()">
+                        Open Notes & Quiz
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS212</h3>
+                    <p>Records and Archives Management</p>
+                    <button onclick="courseMessage('LIS212')">
+                        Open Course
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS213</h3>
+                    <p>Organization of Knowledge III</p>
+                    <button onclick="courseMessage('LIS213')">
+                        Open Course
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS214</h3>
+                    <p>Digital Library Management</p>
+                    <button onclick="courseMessage('LIS214')">
+                        Open Course
+                    </button>
+                </div>
+
+                <div class="course">
+                    <h3>LIS215</h3>
+                    <p>End User Computing I</p>
+                    <button onclick="courseMessage('LIS215')">
+                        Open Course
+                    </button>
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="course-card">
+        <!-- LIS211 -->
 
-            <h3>LIS123</h3>
+        <div id="lis211" style="display:none;">
 
-            <p>
-                Writing and Oral Skills for Social Science
-            </p>
+            <div class="content-box">
 
-            <button onclick="openCourse('LIS123')">
-                Study Course
-            </button>
+                <h2>📖 LIS211 — Information Literacy</h2>
+
+                <h3>1. Meaning of Information Literacy</h3>
+
+                <p>
+                    Information literacy goes beyond simply finding
+                    information online or in books.
+                </p>
+
+                <p>
+                    It involves knowing when information is needed,
+                    where to find it, how to evaluate it, how to organize
+                    it, how to use it ethically and how to create new
+                    knowledge from it.
+                </p>
+
+
+                <h3>2. Components of Information Literacy</h3>
+
+                <p>Important components include:</p>
+
+                <p>
+                    • Identifying information needs<br>
+                    • Locating information<br>
+                    • Evaluating information<br>
+                    • Organizing information<br>
+                    • Using information ethically<br>
+                    • Creating new knowledge
+                </p>
+
+
+                <h3>3. Identifying Information Needs</h3>
+
+                <p>
+                    An information need is the gap between what a person
+                    already knows and what the person needs to know.
+                </p>
+
+                <p>
+                    Information may be needed to solve a problem,
+                    answer a question, make a decision or complete a task.
+                </p>
+
+                <p>
+                    When identifying an information need, consider the
+                    scope, key concepts, questions and the depth or type
+                    of information required.
+                </p>
+
+
+                <h3>4. Locating Information</h3>
+
+                <p>
+                    A good information user should understand the
+                    strengths and limitations of different information
+                    sources.
+                </p>
+
+                <p>
+                    Examples of academic information databases include:
+                </p>
+
+                <p>
+                    Scopus<br>
+                    Web of Science<br>
+                    JSTOR<br>
+                    EBSCO
+                </p>
+
+
+                <h3>5. Evaluating Information</h3>
+
+                <p>
+                    Information should be evaluated before it is used.
+                    Important considerations include:
+                </p>
+
+                <p>
+                    • Credibility<br>
+                    • Relevance<br>
+                    • Authority<br>
+                    • Accuracy<br>
+                    • Currency<br>
+                    • Evidence<br>
+                    • Purpose
+                </p>
+
+
+                <h3>6. CRAAP Test</h3>
+
+                <p>
+                    The CRAAP Test is used to evaluate information sources.
+                </p>
+
+                <p>
+                    <strong>C</strong> — Currency<br>
+                    <strong>R</strong> — Relevance<br>
+                    <strong>A</strong> — Authority<br>
+                    <strong>A</strong> — Accuracy<br>
+                    <strong>P</strong> — Purpose
+                </p>
+
+
+                <h3>7. Organizing Information</h3>
+
+                <p>
+                    Organizing information refers to the systematic
+                    arrangement, classification, documentation and
+                    management of information collected from different
+                    sources so that it can be understood, evaluated and
+                    reused.
+                </p>
+
+                <p>
+                    It helps a student to synthesize evidence, identify
+                    relationships, compare different perspectives and
+                    construct coherent arguments.
+                </p>
+
+
+                <h3>8. Ethical Use of Information</h3>
+
+                <p>
+                    Information should be used responsibly and ethically.
+                    Users should acknowledge their sources, respect
+                    copyright and avoid plagiarism.
+                </p>
+
+
+                <h3>9. Creating New Knowledge</h3>
+
+                <p>
+                    Information literacy also involves using information
+                    through analysis and synthesis to develop new
+                    understanding or knowledge.
+                </p>
+
+            </div>
+
+
+            <!-- QUIZ -->
+
+            <div class="content-box">
+
+                <h2>❓ LIS211 Multiple Choice Quiz</h2>
+
+                <p>
+                    Answer the questions and click
+                    <strong>Submit Quiz</strong>.
+                </p>
+
+
+                <div class="question">
+
+                    <p><strong>1. Information literacy goes beyond:</strong></p>
+
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        A. Finding information online
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        B. Understanding information
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        C. Evaluating information
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        D. Creating knowledge
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <p><strong>2. An information need is best described as:</strong></p>
+
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        A. The gap between what is known and what is needed
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        B. A library building
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        C. A computer
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        D. A book shelf
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <p><strong>3. Which is an academic database?</strong></p>
+
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        A. Scopus
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        B. Calculator
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        C. Paint
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        D. Notepad
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <p><strong>4. What does the C in CRAAP stand for?</strong></p>
+
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        A. Currency
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        B. Computer
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        C. Classification
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        D. Collection
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <p><strong>5. Which is important when evaluating information?</strong></p>
+
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        A. Accuracy
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        B. Colour of the book
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        C. Size of the library
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        D. Shape of the computer
+                    </label>
+
+                </div>
+
+
+                <button class="submit-quiz" onclick="markQuiz()">
+                    ✅ Submit Quiz
+                </button>
+
+                <div id="quizResult" class="result"></div>
+
+            </div>
 
         </div>
-
-
-        <div class="course-card">
-
-            <h3>LIS124</h3>
-
-            <p>
-                Marketing of Library and Information
-                Products and Services
-            </p>
-
-            <button onclick="openCourse('LIS124')">
-                Study Course
-            </button>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <h3>LIS125</h3>
-
-            <p>
-                ICT II
-            </p>
-
-            <button onclick="openCourse('LIS125')">
-                Study Course
-            </button>
-
-        </div>
-
 
     </div>
 
-</section>
 
+    <footer>
 
-<!-- YEAR 2 -->
+        <p>📚 Austine's LIS Study Hub</p>
 
-<section id="year2">
+        <p>University of Malawi | Library and Information Science</p>
 
-    <h2 class="section-title">
-        📕 Second Year
-    </h2>
+    </footer>
 
-    <div class="course-container">
-
-
-        <div class="course-card">
-
-            <h3>LIS211</h3>
-
-            <p>
-                Information Literacy
-            </p>
-
-            <button onclick="openCourse('LIS211')">
-                Study Course
-            </button>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <h3>LIS212</h3>
-
-            <p>
-                Records and Archives Management
-            </p>
-
-            <button onclick="openCourse('LIS212')">
-                Study Course
-            </button>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <h3>LIS213</h3>
-
-            <p>
-                Organization of Knowledge III
-            </p>
-
-            <button onclick="openCourse('LIS213')">
-                Study Course
-            </button>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <h3>LIS214</h3>
-
-            <p>
-                Digital Library Management
-            </p>
-
-            <button onclick="openCourse('LIS214')">
-                Study Course
-            </button>
-
-        </div>
-
-
-        <div class="course-card">
-
-            <h3>LIS215</h3>
-
-            <p>
-                End User Computing I
-            </p>
-
-            <button onclick="openCourse('LIS215')">
-                Study Course
-            </button>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- COURSE PAGE -->
-
-<section id="coursePage">
-
-    <button class="back-button" onclick="goBack()">
-        ← Back to Courses
-    </button>
-
-
-    <div class="course-content" id="courseContent">
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-<footer>
-
-    <p>
-        © 2026 Austine's LIS Study Hub
-    </p>
-
-    <p>
-        Learn • Practise • Improve • Succeed 🎓
-    </p>
-
-</footer>
+</div>
 
 
 <script>
 
+/* ================= ACCOUNT SYSTEM ================= */
 
-function openCourse(course) {
+function showRegister() {
 
-    document.getElementById("home").style.display = "none";
+    document.getElementById("loginForm").style.display = "none";
 
-    document.getElementById("year1").style.display = "none";
+    document.getElementById("registerForm").style.display = "block";
 
-    document.getElementById("year2").style.display = "none";
+    document.getElementById("authTitle").innerHTML =
+        "Create Account";
 
-    document.getElementById("coursePage").style.display = "block";
+    document.getElementById("authDescription").innerHTML =
+        "Create your account to access the LIS Study Hub.";
 
-
-    if (course === "LIS211") {
-
-        showLIS211();
-
-    }
-
-    else {
-
-        document.getElementById("courseContent").innerHTML = `
-
-            <h2>${course}</h2>
-
-            <p>
-                Notes and questions for this course will be
-                added here.
-            </p>
-
-            <p>
-                We will build this section using your actual
-                lecture material.
-            </p>
-
-        `;
-
-    }
-
-
-    window.scrollTo(0,0);
+    document.getElementById("message").innerHTML = "";
 
 }
 
 
+function showLogin() {
 
-function goBack() {
+    document.getElementById("loginForm").style.display = "block";
 
-    document.getElementById("coursePage").style.display = "none";
+    document.getElementById("registerForm").style.display = "none";
 
-    document.getElementById("home").style.display = "block";
+    document.getElementById("authTitle").innerHTML =
+        "LIS Study Hub";
 
-    document.getElementById("year1").style.display = "block";
+    document.getElementById("authDescription").innerHTML =
+        "Login to access your Library and Information Science study materials.";
 
-    document.getElementById("year2").style.display = "block";
-
-    window.scrollTo(0,0);
+    document.getElementById("message").innerHTML = "";
 
 }
 
+
+function register() {
+
+    let username =
+        document.getElementById("registerUsername").value.trim();
+
+    let password =
+        document.getElementById("registerPassword").value;
+
+    let confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    let message =
+        document.getElementById("message");
+
+
+    if (username === "" || password === "") {
+
+        message.innerHTML = "⚠️ Please fill in all fields.";
+
+        message.style.color = "red";
+
+        return;
+    }
+
+
+    if (password !== confirmPassword) {
+
+        message.innerHTML = "❌ Passwords do not match.";
+
+        message.style.color = "red";
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "lisUsername",
+        username
+    );
+
+    localStorage.setItem(
+        "lisPassword",
+        password
+    );
+
+
+    message.innerHTML =
+        "✅ Account created successfully!";
+
+    message.style.color = "green";
+
+
+    setTimeout(function() {
+
+        showLogin();
+
+    }, 1200);
+
+}
+
+
+function login() {
+
+    let username =
+        document.getElementById("loginUsername").value.trim();
+
+    let password =
+        document.getElementById("loginPassword").value;
+
+    let savedUsername =
+        localStorage.getItem("lisUsername");
+
+    let savedPassword =
+        localStorage.getItem("lisPassword");
+
+    let message =
+        document.getElementById("message");
+
+
+    if (username === savedUsername &&
+        password === savedPassword) {
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+        document.getElementById("auth").style.display =
+            "none";
+
+        document.getElementById("website").style.display =
+            "block";
+
+        showHome();
+
+    } else {
+
+        message.innerHTML =
+            "❌ Incorrect username or password.";
+
+        message.style.color = "red";
+
+    }
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem("loggedIn");
+
+    document.getElementById("website").style.display =
+        "none";
+
+    document.getElementById("auth").style.display =
+        "block";
+
+    showLogin();
+
+}
+
+
+/* ================= NAVIGATION ================= */
+
+function hideAll() {
+
+    document.getElementById("home").style.display =
+        "none";
+
+    document.getElementById("lis211").style.display =
+        "none";
+
+}
+
+
+function showHome() {
+
+    hideAll();
+
+    document.getElementById("home").style.display =
+        "block";
+
+}
+
+
+function showYear1() {
+
+    hideAll();
+
+    document.getElementById("home").style.display =
+        "block";
+
+    document.getElementById("home").scrollIntoView();
+
+}
+
+
+function showYear2() {
+
+    hideAll();
+
+    document.getElementById("home").style.display =
+        "block";
+
+    document.querySelector(".year-title:nth-of-type(2)")
+        ?.scrollIntoView();
+
+}
 
 
 function showLIS211() {
 
-document.getElementById("courseContent").innerHTML = `
+    hideAll();
 
-<h2>📘 LIS211 — Information Literacy</h2>
+    document.getElementById("lis211").style.display =
+        "block";
 
-<p>
-Information literacy goes beyond simply finding information
-online or in books. It involves knowing when information is
-needed, locating appropriate information, evaluating it,
-organizing it, using it ethically and creating new knowledge.
-</p>
-
-
-<h3>1. Identifying Information Needs</h3>
-
-<p>
-An information need is the gap between what a person already
-knows and what the person needs to know.
-</p>
-
-<ul>
-
-<li>Solving a problem</li>
-
-<li>Answering a question</li>
-
-<li>Making a decision</li>
-
-<li>Completing a task</li>
-
-<li>Determining the scope of the information required</li>
-
-</ul>
-
-
-<h3>2. Locating Information</h3>
-
-<p>
-Information literacy requires knowing where appropriate
-information can be found and understanding the strengths
-and limitations of different information sources.
-</p>
-
-<ul>
-
-<li>Library databases</li>
-
-<li>Academic journals</li>
-
-<li>Books</li>
-
-<li>Websites</li>
-
-<li>Research databases</li>
-
-</ul>
-
-<p>
-Examples of academic databases include Scopus,
-Web of Science, JSTOR and EBSCO.
-</p>
-
-
-<h3>3. Evaluating Information</h3>
-
-<p>
-Information should be evaluated before it is used.
-Important considerations include credibility, relevance,
-authority, accuracy, currency, evidence and purpose.
-</p>
-
-<p>
-The CRAAP Test can be used to evaluate information sources.
-CRAAP stands for Currency, Relevance, Authority, Accuracy
-and Purpose.
-</p>
-
-
-<h3>4. Organizing Information</h3>
-
-<p>
-Organizing information refers to the systematic arrangement,
-classification, documentation and management of information
-collected from different sources so that it can be understood,
-evaluated and reused.
-</p>
-
-<p>
-The purpose is to move beyond simply collecting information.
-It helps a researcher synthesize evidence, identify
-relationships, compare perspectives and construct coherent
-arguments.
-</p>
-
-
-<h3>5. Ethical Use of Information</h3>
-
-<p>
-Information should be used responsibly. Users should respect
-copyright, acknowledge sources and avoid plagiarism.
-</p>
-
-
-<h3>6. Creating New Knowledge</h3>
-
-<p>
-Information literacy can lead to the creation of new knowledge
-when information from different sources is analysed,
-synthesized and used to develop new understanding.
-</p>
-
-
-<h2>🧠 LIS211 Practice Quiz</h2>
-
-
-<div class="quiz-question">
-
-<h4>1. What is an information need?</h4>
-
-<label>
-<input type="radio" name="l1" value="A">
-A. The gap between what is known and what is needed
-</label>
-
-<label>
-<input type="radio" name="l1" value="B">
-B. A library building
-</label>
-
-<label>
-<input type="radio" name="l1" value="C">
-C. A computer programme
-</label>
-
-<label>
-<input type="radio" name="l1" value="D">
-D. A newspaper
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>2. Which is an academic database?</h4>
-
-<label>
-<input type="radio" name="l2" value="A">
-A. Scopus
-</label>
-
-<label>
-<input type="radio" name="l2" value="B">
-B. Calculator
-</label>
-
-<label>
-<input type="radio" name="l2" value="C">
-C. Camera
-</label>
-
-<label>
-<input type="radio" name="l2" value="D">
-D. Music player
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>3. Which is NOT normally considered when evaluating information?</h4>
-
-<label>
-<input type="radio" name="l3" value="A">
-A. Accuracy
-</label>
-
-<label>
-<input type="radio" name="l3" value="B">
-B. Currency
-</label>
-
-<label>
-<input type="radio" name="l3" value="C">
-C. Authority
-</label>
-
-<label>
-<input type="radio" name="l3" value="D">
-D. Colour of the website
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>4. What does CRAAP stand for?</h4>
-
-<label>
-<input type="radio" name="l4" value="A">
-A. Currency, Relevance, Authority, Accuracy and Purpose
-</label>
-
-<label>
-<input type="radio" name="l4" value="B">
-B. Classification, Research, Archives and Analysis Process
-</label>
-
-<label>
-<input type="radio" name="l4" value="C">
-C. Current Records and Archives Programme
-</label>
-
-<label>
-<input type="radio" name="l4" value="D">
-D. Computer Research and Academic Application Process
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>5. Information literacy goes beyond:</h4>
-
-<label>
-<input type="radio" name="l5" value="A">
-A. Simply finding information
-</label>
-
-<label>
-<input type="radio" name="l5" value="B">
-B. Evaluating sources
-</label>
-
-<label>
-<input type="radio" name="l5" value="C">
-C. Identifying information needs
-</label>
-
-<label>
-<input type="radio" name="l5" value="D">
-D. Using information ethically
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>6. Which principle is related to ethical information use?</h4>
-
-<label>
-<input type="radio" name="l6" value="A">
-A. Plagiarism
-</label>
-
-<label>
-<input type="radio" name="l6" value="B">
-B. Acknowledging sources
-</label>
-
-<label>
-<input type="radio" name="l6" value="C">
-C. Copying everything
-</label>
-
-<label>
-<input type="radio" name="l6" value="D">
-D. Ignoring copyright
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>7. Which is an important factor when evaluating a source?</h4>
-
-<label>
-<input type="radio" name="l7" value="A">
-A. Authority
-</label>
-
-<label>
-<input type="radio" name="l7" value="B">
-B. Phone size
-</label>
-
-<label>
-<input type="radio" name="l7" value="C">
-C. Screen brightness
-</label>
-
-<label>
-<input type="radio" name="l7" value="D">
-D. Keyboard colour
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>8. Organizing information helps researchers to:</h4>
-
-<label>
-<input type="radio" name="l8" value="A">
-A. Compare perspectives
-</label>
-
-<label>
-<input type="radio" name="l8" value="B">
-B. Destroy evidence
-</label>
-
-<label>
-<input type="radio" name="l8" value="C">
-C. Avoid research
-</label>
-
-<label>
-<input type="radio" name="l8" value="D">
-D. Hide information
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>9. Which is an example of misinformation?</h4>
-
-<label>
-<input type="radio" name="l9" value="A">
-A. False or inaccurate information
-</label>
-
-<label>
-<input type="radio" name="l9" value="B">
-B. Every academic article
-</label>
-
-<label>
-<input type="radio" name="l9" value="C">
-C. Every library catalogue
-</label>
-
-<label>
-<input type="radio" name="l9" value="D">
-D. Every government record
-</label>
-
-</div>
-
-
-<div class="quiz-question">
-
-<h4>10. What can information literacy ultimately contribute to?</h4>
-
-<label>
-<input type="radio" name="l10" value="A">
-A. Creating new knowledge
-</label>
-
-<label>
-<input type="radio" name="l10" value="B">
-C. Avoiding information
-</label>
-
-<label>
-<input type="radio" name="l10" value="C">
-C. Destroying sources
-</label>
-
-<label>
-<input type="radio" name="l10" value="D">
-D. Ignoring evidence
-</label>
-
-</div>
-
-
-<br>
-
-<button onclick="markLIS211()">
-Submit LIS211 Quiz
-</button>
-
-
-<div id="quizResult"></div>
-
-`;
+    window.scrollTo(0,0);
 
 }
 
 
+function courseMessage(course) {
 
-function markLIS211() {
+    alert(
+        course +
+        " notes and questions will be added here from your lectures."
+    );
 
-let answers = {
+}
 
-l1:"A",
-l2:"A",
-l3:"D",
-l4:"A",
-l5:"A",
-l6:"B",
-l7:"A",
-l8:"A",
-l9:"A",
-l10:"A"
+
+/* ================= QUIZ ================= */
+
+function markQuiz() {
+
+    let answers = {
+
+        q1: "A",
+        q2: "A",
+        q3: "A",
+        q4: "A",
+        q5: "A"
+
+    };
+
+
+    let score = 0;
+
+
+    for (let question in answers) {
+
+        let selected =
+            document.querySelector(
+                'input[name="' +
+                question +
+                '"]:checked'
+            );
+
+
+        if (selected &&
+            selected.value === answers[question]) {
+
+            score++;
+
+        }
+
+    }
+
+
+    let percentage =
+        (score / 5) * 100;
+
+
+    document.getElementById("quizResult").innerHTML =
+        "🎉 Your score: " +
+        score +
+        "/5 (" +
+        percentage +
+        "%)";
+
+}
+
+
+/* ================= CHECK LOGIN ================= */
+
+window.onload = function() {
+
+    let loggedIn =
+        localStorage.getItem("loggedIn");
+
+    if (loggedIn === "true") {
+
+        document.getElementById("auth").style.display =
+            "none";
+
+        document.getElementById("website").style.display =
+            "block";
+
+    }
 
 };
 
-
-let score = 0;
-
-
-for (let question in answers) {
-
-let selected =
-document.querySelector(
-'input[name="' + question + '"]:checked'
-);
-
-
-if (selected && selected.value === answers[question]) {
-
-score++;
-
-}
-
-}
-
-
-let percentage = score * 10;
-
-
-document.getElementById("quizResult").innerHTML =
-
-"🎉 Your Score: " +
-score +
-"/10<br>" +
-"Percentage: " +
-percentage +
-"%";
-
-
-}
-
 </script>
 
-
 </body>
-
 </html>
